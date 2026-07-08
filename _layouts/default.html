@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} &mdash; {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}">
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  {% feed_meta %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-row">
+      <a href="{{ '/' | relative_url }}" class="header-brand">
+        <img
+          class="brand-icon"
+          src="{{ '/assets/chicago-crash-flag-icon.png' | relative_url }}"
+          width="120"
+          height="80"
+          alt=""
+          aria-hidden="true"
+        >
+        <span class="brand-title"><em>Crash</em> Stop Chicago</span>
+        <span class="brand-badge">Blog</span>
+      </a>
+      <nav class="site-nav" aria-label="Site navigation">
+        <a href="https://crashstop.org/chicago/" class="nav-link important-link">Crash Map</a>
+        <a href="https://crashstop.org/chicago/about" class="nav-link">About This Data</a>
+        <a href="{{ '/feed.xml' | relative_url }}" class="nav-link">RSS</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    {{ content }}
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="https://crashstop.org/chicago/" class="footer-nav-link footer-nav-link--important">Crash Map</a>
+        <a href="https://crashstop.org/chicago/about" class="footer-nav-link">About This Data</a>
+        <a href="{{ '/feed.xml' | relative_url }}" class="footer-nav-link">RSS</a>
+      </nav>
+      <div class="footer-base">
+        <div class="footer-brand">
+          <a href="{{ '/' | relative_url }}">
+            <img
+              class="footer-icon"
+              src="{{ '/assets/chicago-crash-flag-icon.png' | relative_url }}"
+              width="120"
+              height="80"
+              alt=""
+              aria-hidden="true"
+            ></a>
+          <span class="footer-title">
+            <a href="{{ '/' | relative_url }}"><em>Crash</em> Stop Chicago</a>
+          </span>
+        </div>
+        <div class="footer-meta">
+          <span>&copy; {{ site.time | date: "%Y" }}</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

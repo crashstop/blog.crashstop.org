@@ -1,0 +1,19 @@
+title: "Crash Stop Chicago: Site News And Blog"
+description: Updates and blog stuff for crashstop.org/chicago
+url: "https://blog.crashstop.org"
+baseurl: ""
+timezone: America/Chicago
+
+permalink: /:year/:month/:day/:title/
+
+markdown: kramdown
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - serve
+  - vendor/

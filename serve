@@ -1,0 +1,5 @@
+#!/bin/zsh
+# Serve the blog locally with live reload. Optional arg is the port (default 4000).
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+cd "$(dirname "$0")"
+bundle exec jekyll serve --livereload --port "${1:-2157}"
