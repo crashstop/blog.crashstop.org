@@ -14,6 +14,19 @@
   >
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   {% feed_meta %}
+  {% if jekyll.environment == "production" %}
+  <!-- Same GA4 property as the crash map (mapper-chicagocrashes src/app.html); split by hostname in reports. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D5470VNTK6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-D5470VNTK6');
+  </script>
+  {% endif %}
 </head>
 <body>
   <header class="site-header">
