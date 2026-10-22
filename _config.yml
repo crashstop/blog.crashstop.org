@@ -6,6 +6,23 @@ timezone: America/Chicago
 
 permalink: /:year/:month/:day/:title/
 
+# Posts in these categories are left off the main index (they still get
+# category pages and appear in the feed).
+hidden_categories:
+  - crash-stories
+
+# Jekyll only derives categories from folders ABOVE _posts, so subfolders
+# inside _posts need their category assigned here.
+defaults:
+  - scope:
+      path: "_posts/main"
+    values:
+      categories: ["main"]
+  - scope:
+      path: "_posts/crash-stories"
+    values:
+      categories: ["crash-stories"]
+
 markdown: kramdown
 
 plugins:

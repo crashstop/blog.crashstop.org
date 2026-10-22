@@ -1,0 +1,30 @@
+{% comment %}
+  Shared post card. Params:
+    post       — post or page object
+    content    — rendered HTML body (post.content in loops, content in layouts)
+    link_title — link the title to the post's page
+{% endcomment %}
+{% assign shown_categories = "" | split: "" %}
+{% for cat in include.post.categories %}
+  {% unless cat == "main" %}{% assign shown_categories = shown_categories | push: cat %}{% endunless %}
+{% endfor %}
+<article class="post-card">
+  <header class="post-header">
+    <time class="post-date" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%B %-d, %Y" }}</time>
+    {% if shown_categories.size > 0 %}
+    <span class="post-categories">
+      {% for cat in shown_categories %}
+      <a class="post-category" href="{{ '/' | append: cat | append: '/' | relative_url }}">{{ cat | replace: '-', ' ' }}</a>
+      {% endfor %}
+    </span>
+    {% endif %}
+    {% if include.link_title %}
+    <h1 class="post-title"><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h1>
+    {% else %}
+    <h1 class="post-title">{{ include.post.title }}</h1>
+    {% endif %}
+  </header>
+  <div class="post-body">
+    {{ include.content }}
+  </div>
+</article>

@@ -1,0 +1,12 @@
+{% comment %}
+  Embed a PDF via PDFObject (assets/js/pdfobject.min.js). Params:
+    url — path or URL to the PDF, e.g. /assets/reports/myreport.pdf
+  The target div's id is derived from the filename, so it stays unique
+  as long as two PDFs on the same page have different filenames.
+{% endcomment %}
+{% assign pdf_id = include.url | split: "/" | last | replace: ".pdf", "" | slugify | prepend: "pdf-" %}
+<div id="{{ pdf_id }}"></div>
+<script src="{{ '/assets/js/pdfobject.min.js' | relative_url }}"></script>
+<script>
+  PDFObject.embed("{{ include.url | relative_url }}", "#{{ pdf_id }}");
+</script>

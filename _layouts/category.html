@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<h1 class="page-title">{{ page.title }}</h1>
+{% if page.description %}
+<div class="page-description">{{ page.description | markdownify }}</div>
+{% endif %}
+{% assign posts = site.categories[page.category] %}
+{% if posts and posts.size > 0 %}
+{% for post in posts %}
+{% include post-card.html post=post content=post.content link_title=true %}
+{% endfor %}
+{% else %}
+<p class="page-empty">No posts yet.</p>
+{% endif %}
+<nav class="post-nav">
+  <a href="{{ '/' | relative_url }}">&larr; All posts</a>
+</nav>
